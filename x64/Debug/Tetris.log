@@ -1,0 +1,50 @@
+﻿  Game.cpp
+C:\Users\benja\source\repos\Tetris\Game.cpp(28,11): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Main.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(16,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(16,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+  MenuState.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(16,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(16,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(104,118): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(104,88): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(104,62): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(104,40): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  PlayState.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(16,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(16,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.cpp(185,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  Tetris.vcxproj -> C:\Users\benja\source\repos\Tetris\x64\Debug\Tetris.exe
