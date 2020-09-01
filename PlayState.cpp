@@ -1,187 +1,9 @@
 #include "PlayState.h"
 
-int field[M][N] = { 0 };
-
-// swap between 2 frames to give illusion of moving
-struct position
-{
-    int x, y;
-} frame_a[4], frame_b[4];
-
-// tetris pieces
-int tetrinos[7][4] =
-{
-    1,3,5,7, // i
-    2,4,5,7, // z
-    3,5,4,6, // s
-    3,5,4,7, // t
-    2,3,5,7, // l
-    3,5,7,6, // j
-    2,3,4,5, // o
-};
-
-void PlayState::draw(const float dt)
-{
-    /*
-        Figure out why Tetrinos does not want to show up
-    */
-    // Falling Tetrinos
-    for (int i = 0; i < M; ++i)
-    {
-        for (int j = 0; j < N; j++)
-        {
-            if (field[i][j] == 0)
-            {
-                continue;
-            }
-            // getting the single cube from tiles.png
-            sTetrinos.setTextureRect(sf::IntRect(field[i][j] * FACTOR, 0, TETRINOS_WIDTH, TETRINOS_HEIGHT));
-            // to prevent conversion warning
-            float float_i = (float)i;
-            float float_j = (float)j;
-            sTetrinos.setPosition(float_j * FACTOR, float_i * FACTOR);
-            sTetrinos.move(28, 31); //offset to fit within frame
-            game->window.draw(sTetrinos);
-        }
-    }
-
-    // Tetrinos at the bottom
-    for (int i = 0; i < 4; ++i)
-    {
-        sTetrinos.setTextureRect(sf::IntRect(colournum * FACTOR, 0, TETRINOS_WIDTH, TETRINOS_HEIGHT));
-        float float_x = (float)frame_a[i].x;
-        float float_y = (float)frame_a[i].y;
-        sTetrinos.setPosition(float_x * FACTOR, float_y * FACTOR);
-        sTetrinos.move(28, 31); //offset to fit within frame
-        game->window.draw(sTetrinos);
-    }
-
-    // Background
-    game->window.draw(sBackground);
-    // Frame
-    game->window.draw(sFrame);
-}
-
-void PlayState::update(const float dt)
-{
-    this->timer += dt;
-
-    // Movement
-    for (int i = 0; i < 4; ++i)
-    {
-        frame_b[i] = frame_a[i];
-        frame_a[i].x += dx;
-    }
-    if (!this->Check())
-    {
-        for (int i = 0; i < 4; ++i)
-        {
-            frame_a[i] = frame_b[i];
-        }
-    }
-
-    // falling mechanism
-    if (this->timer > this->delay)
-    {
-        // fall in the +ve y-direction
-        for (int i = 0; i < 4; ++i)
-        {
-            frame_b[i] = frame_a[i];
-            frame_a[i].y += 1;
-        }
-        if (! this->Check())
-        {
-            for (int i = 0; i < 4; ++i)
-            {
-                field[frame_b[i].y][frame_b[i].x] = colournum;
-            }
-            // randomly chooses the piece type and colour
-            this->colournum = 1 + rand() % 7; //colour number from tiles.png
-            this->n = rand() % 7; // tile pieces
-            for (int i = 0; i < 4; i++)
-            {
-                frame_a[i].x = tetrinos[n][i] % 2;
-                frame_a[i].y = tetrinos[n][i] / 2;
-            }
-        } 
-    }
-
-    // rotate
-    if (this->rotate)
-    {
-        position ctr = frame_a[1]; // center of rotation
-        for (int i = 0; i < 4; ++i)
-        {
-            int x = frame_a[i].y - ctr.y;
-            int y = frame_a[i].x - ctr.x;
-            frame_a[i].x = ctr.x - x;
-            frame_a[i].y = ctr.y + y;
-        }
-        if (! this->Check())
-        {
-            for (int i = 0; i < 4; ++i)
-            {
-                frame_a[i] = frame_b[i];
-            }
-        }
-    }
-
-    // check for complete line
-    is_complete();
-
-    // Check if Game is over
-    if (this->GameOver() == GAME_STATE::GAME_OVER)
-    {
-
-    }
-
-    // reset variables
-    this->dx = RELEASE_POINT; this->rotate = 0; this->delay = DELAY;
-}
-
-void PlayState::handleInput()
-{
-    sf::Event event;
-
-    while (this->game->window.pollEvent(event))
-    {
-        switch (event.type)
-        {
-            /* Close the window */
-        case sf::Event::Closed:
-            this->game->window.close();
-            break;
-
-            //pause game
-        case sf::Event::KeyPressed:
-            if (event.key.code == sf::Keyboard::Escape)
-                PauseGame();
-            if (event.key.code == sf::Keyboard::Up)
-            {
-                this->rotate = true;
-                std::cout << "Pressed up." << std::endl;
-            }
-            else if (event.key.code == sf::Keyboard::Left)
-            {
-                this->dx = -1;
-                std::cout << "Pressed left." << std::endl;
-            }
-            else if (event.key.code == sf::Keyboard::Right)
-            {
-                this->dx = 1;
-                std::cout << "Pressed right." << std::endl;
-            }
-            else if (event.key.code == sf::Keyboard::Down)
-            {
-                this->delay = SPEED_UP;
-                std::cout << "Pressed down." << std::endl;
-            }
-            break;
-        default:
-            break; // prevent unknown cases
-        }
-    }
-}
+const char* PRESSED_MUSIC = "Audio/move.wav";
+const char* GM_OVER_MUSIC = "Audio/gameover.wav";
+const char* COMPLT_MUSIC = "Audio/complete.wav";
+extern const char* FONT_PATH;
 
 PlayState::PlayState(Game* game)
 {
@@ -198,13 +20,207 @@ PlayState::PlayState(Game* game)
     sf::Vector2f targetSize(PLAY_WINDOW_WIDTH, PLAY_WINDOW_HEIGHT);
     sBackground.setScale(targetSize.x / sBackground.getLocalBounds().width, targetSize.y / sBackground.getLocalBounds().height);
     sFrame.setScale(targetSize.x / sFrame.getLocalBounds().width, targetSize.y / sFrame.getLocalBounds().height);
-    sTetrinos.setScale(targetSize.x / sTetrinos.getLocalBounds().width, targetSize.y / sTetrinos.getLocalBounds().height);
+
+    // Audio
+    press_buffer.loadFromFile(PRESSED_MUSIC);
+    press_sound.setBuffer(press_buffer);
+
+    gm_over_buffer.loadFromFile(GM_OVER_MUSIC);
+    gm_over_sound.setBuffer(gm_over_buffer);
+
+    cmplt_buffer.loadFromFile(COMPLT_MUSIC); // Find out which line does the elimintation of tetrinos
+    cmplt_sound.setBuffer(cmplt_buffer);
+
+    // Text
+    font.loadFromFile(FONT_PATH);
+    text.setFont(font);
+    text.setPosition(10, 405);
+    text.setCharacterSize(20); // in pixels, not points!                         
+    text.setFillColor(sf::Color::Black);   // set the color  
+    text.setString("Press ESC to quit.\nPress UP to rotate.\nPress LEFT/RIGHT to move.\n");
+
     this->game = game;
+}
+
+void PlayState::draw(const float dt)
+{
+    // Ranking matters
+
+    // Background
+    game->window.draw(sBackground);
+
+    /*
+        Figure out why Tetrinos does not want to show up
+    */
+    // Falling Tetrinos
+    for (int i = 0; i < M; ++i)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            if (field[i][j] != 0)
+            {
+                // getting the single cube from tiles.png
+                sTetrinos.setTextureRect(sf::IntRect(field[i][j] * FACTOR, 0, TETRINOS_WIDTH, TETRINOS_HEIGHT));
+                // to prevent conversion warning
+                float float_i = (float)i;
+                float float_j = (float)j;
+                sTetrinos.setPosition(float_j * FACTOR, float_i * FACTOR);
+                sTetrinos.move(28, 31); //offset to fit within frame
+                game->window.draw(sTetrinos);
+            }
+        }
+    }
+
+    // Tetrinos at the bottom
+    for (int i = 0; i < 4; ++i)
+    {
+        sTetrinos.setTextureRect(sf::IntRect(colournum * FACTOR, 0, TETRINOS_WIDTH, TETRINOS_HEIGHT));
+        float float_x = (float)frame_a[i].x;
+        float float_y = (float)frame_a[i].y;
+        sTetrinos.setPosition(float_x * FACTOR, float_y * FACTOR);
+        sTetrinos.move(28, 31); //offset to fit within frame
+        game->window.draw(sTetrinos);
+    }
+
+    // Frame
+    game->window.draw(sFrame);
+    
+    // Font
+    game->window.draw(text);
+}
+
+void PlayState::update(const float dt)
+{
+    timer += dt;
+
+    // check for complete line
+    is_complete();
+
+    // Movement
+    for (int i = 0; i < 4; ++i)
+    {
+        frame_b[i] = frame_a[i];
+        frame_a[i].x += dx;
+    }
+    if (!Check())
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            frame_a[i] = frame_b[i];
+        }
+    }
+
+    // falling mechanism
+    if (timer > delay)
+    {
+        // fall in the +ve y-direction
+        for (int i = 0; i < 4; ++i)
+        {
+            frame_b[i] = frame_a[i];
+            frame_a[i].y += 1;
+        }
+        if (!Check())
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                field[frame_b[i].y][frame_b[i].x] = colournum;
+            }
+            // randomly chooses the piece type and colour
+            colournum = 1 + rand() % 7; //colour number from tiles.png
+            n = rand() % 7; // tile pieces
+            for (int i = 0; i < 4; i++)
+            {
+                frame_a[i].x = tetrinos[n][i] % 2;
+                frame_a[i].y = tetrinos[n][i] / 2;
+            }
+        }
+        timer = 0; // Reset timer once condition is true
+    }
+
+    // rotate
+    if (rotate)
+    {
+        position ctr = frame_a[1]; // center of rotation
+        for (int i = 0; i < 4; ++i)
+        {
+            int x = frame_a[i].y - ctr.y;
+            int y = frame_a[i].x - ctr.x;
+            frame_a[i].x = ctr.x - x;
+            frame_a[i].y = ctr.y + y;
+        }
+        if (!Check())
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                frame_a[i] = frame_b[i];
+            }
+        }
+        rotate = 0; // Reset rotate once condition is true
+    }
+
+    // Check if Game is over
+    if (GameOver() == GAME_STATE::GAME_OVER)
+    {   
+        game_over_state();
+    }
+
+    // reset variables
+    dx = 0; delay = DELAY;
+}
+
+void PlayState::handleInput()
+{
+    sf::Event event;
+
+    while (game->window.pollEvent(event))
+    {
+        switch (event.type)
+        {
+            /* Close the window */
+        case sf::Event::Closed:
+            game->window.close();
+            break;
+
+            //pause game
+        case sf::Event::KeyPressed:
+            if (event.key.code == sf::Keyboard::Escape)
+            {
+                game_over_state();
+                std::cout << "Pressed ESC." << std::endl;
+            }
+            if (event.key.code == sf::Keyboard::Up)
+            {
+                rotate = true;
+                play_sound();
+                std::cout << "Pressed up." << std::endl;
+            }
+            else if (event.key.code == sf::Keyboard::Left)
+            {
+                dx = -1;
+                play_sound();
+                std::cout << "Pressed left." << std::endl;
+            }
+            else if (event.key.code == sf::Keyboard::Right)
+            {
+                dx = 1;
+                play_sound();
+                std::cout << "Pressed right." << std::endl;
+            }
+            else if (event.key.code == sf::Keyboard::Down)
+            {
+                delay = SPEED_UP;
+                play_sound();
+                std::cout << "Pressed down." << std::endl;
+            }
+            break;
+        default:
+            break; // prevent unknown cases
+        }
+    }
 }
 
 void PlayState::PauseGame()
 {
-
 
 }
 
@@ -245,19 +261,29 @@ void PlayState::is_complete()
     for (int i = k; i > 0; --i)
     {
         int count = 0;
-        for (int j = 0; j < n; ++j)
+        for (int j = 0; j < N; ++j)
         {
             // if field is occupied, count++
             if (field[i][j])
             {
                 count++;
             }
-            //std::cout << "i: " << i << " j: " << j << " k: " << k << " count: " << count << std::endl;
             field[k][j] = field[i][j]; // line above = new current line = everything above completed line shifts down
         }
-        if (count < n)
+        if (count < N)
         {
             k--; // k needs to be updated to correspond to updating i
         }
     }
+}
+
+void PlayState::game_over_state()
+{
+    gm_over_sound.play();
+    game->pushState(new GameOverState(game));
+}
+
+void PlayState::play_sound()
+{
+    press_sound.play();
 }

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "MenuState.h"
 #include "PlayState.h"
+#include "GameOverState.h"
 
 int main()
 {

@@ -1,5 +1,6 @@
-MenuImage	Images/shaco_test.jpg
+MenuImage	Images/Tetris_1.jpg
 MenuFont	Font/evil-empire-font/EvilEmpire-4BBVK.ttf
 Tetrinos	Images/tiles.png
 TetrisBG	Images/background.png
 TetrisFrame	Images/frame.png
+GameOverImage	Images/Game_Over.jpg

@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "GameState.h"
 
 class GameState;
@@ -30,6 +31,9 @@ public:
     sf::RenderWindow window;
 
 private:
+    sf::SoundBuffer bgbuffer;
+    sf::Sound bgsound;
+
     std::vector<GameState*> states;
 };
 

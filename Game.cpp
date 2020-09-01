@@ -1,15 +1,22 @@
 #include "Game.h"
 
-const int WINDOW_HEIGHT = 420;
+const int WINDOW_HEIGHT = 480;
 const int WINDOW_WIDTH = 320;
 const int MAX_FPS = 60;
 const char* WINDOW_TITLE = "My Tetris";
+const char* BG_MUSIC = "Audio/bgmusic.wav";
 
 Game::Game()
 {
-    window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Default);
+    window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::None);
 
     window.setFramerateLimit(MAX_FPS);
+
+    bgbuffer.loadFromFile(BG_MUSIC);
+    bgsound.setBuffer(bgbuffer);
+    bgsound.setLoop(true);
+    bgsound.play();
+
 }
 
 Game::~Game()
@@ -65,7 +72,5 @@ void Game::gameLoop()
         CurrentState()->draw(dt);
 
         window.display();
-
-        dt = 0; // Reset elapsed time
     }
 }

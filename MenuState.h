@@ -4,6 +4,7 @@
 #define GAME_STATE_START_HPP
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <vector>
 
@@ -30,13 +31,18 @@ private:
     TextureManager menuScreen;
     sf::Sprite menuSprite;
 
+    // Audio
+    sf::SoundBuffer start_buffer;
+    sf::Sound start_sound;
+
     // For my buttons
+    sf::Text text;
     std::vector<sf::Text> buttons;
     sf::Font font;
-    const int NUM_BUTTONS = 3;
+    const int NUM_BUTTONS = 2;
     bool isTextClicked(sf::Text text);
 
-    //this will be used to change the game state to the "Play the actual fucking game" state.
+    //this will be used to change the game state to the "Play" state.
     void loadgame();
 };
 

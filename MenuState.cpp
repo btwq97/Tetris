@@ -1,33 +1,38 @@
 #include "MenuState.h"
 
+const char* FONT_PATH = "Font/evil-empire-font/EvilEmpire-4BBVK.ttf";
+const char* START_MUSIC = "Audio/start.wav";
+
 MenuState::MenuState(Game* game)
 {
     menuScreen.AddResource("MenuImage"); // Enter Image Name
     menuSprite.setTexture(*(menuScreen.GetResource("MenuImage")));
     
     // Game Text Menu
-    sf::Text text;
-    font.loadFromFile("Font/evil-empire-font/EvilEmpire-4BBVK.ttf");
+    font.loadFromFile(FONT_PATH);
     text.setFont(font);
-    text.setPosition(100, 100);
+    text.setPosition(100, 300);
     text.setCharacterSize(24); // in pixels, not points!                         
     text.setFillColor(sf::Color::White);   // set the color  
     text.setStyle(sf::Text::Bold); // set the text style
 
-    //set positions of things
-    for (int i = 0; i < NUM_BUTTONS; i++)
+    //set positions of buttons
+    for (int i = 0; i < NUM_BUTTONS; ++i)
     {
         buttons.push_back(text);
-        buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * 100); // Spaces of 100, 200, 300 in y-axis
+        buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * 100); // Spaces of 100, 200 in y-axis
     }
     buttons[0].setString("Play Game");
-    buttons[1].setString("Options");
-    buttons[2].setString("Quit");
+    buttons[1].setString("    Quit");
 
     // Scaling image to appropiate size
     sf::Vector2f targetSize(MENU_WINDOW_WIDTH, MENU_WINDOW_HEIGHT);
     menuSprite.setScale(targetSize.x / menuSprite.getLocalBounds().width,
         targetSize.y / menuSprite.getLocalBounds().height);
+
+    // Audio
+    start_buffer.loadFromFile(START_MUSIC);
+    start_sound.setBuffer(start_buffer);
    
     this->game = game; // Pushing MenuState as current state
 }
@@ -62,10 +67,6 @@ void MenuState::handleInput()
                 buttons[1].setFillColor(sf::Color::Red);
             else
                 buttons[1].setFillColor(sf::Color::White);
-            if (isTextClicked(buttons[2]))
-                buttons[2].setFillColor(sf::Color::Red);
-            else
-                buttons[2].setFillColor(sf::Color::White);
             break;
         }
         //check if text is clicked.
@@ -73,7 +74,7 @@ void MenuState::handleInput()
         {
             if (isTextClicked(buttons[0]))
                 loadgame();
-            else if (isTextClicked(buttons[2]))
+            else if (isTextClicked(buttons[1]))
                 game->window.close();
         }
     }
@@ -96,6 +97,7 @@ void MenuState::draw(const float dt)
 
 void MenuState::loadgame()
 {
+    start_sound.play();
     game->pushState(new PlayState(game));
 }
 
