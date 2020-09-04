@@ -95,7 +95,7 @@ void PlayState::update(const float dt)
 
     // check for complete line
     is_complete();
-
+    
     // Movement
     for (int i = 0; i < 4; ++i)
     {
@@ -255,12 +255,13 @@ GAME_STATE PlayState::GameOver()
     return GAME_STATE::GAME_IN_PROGRESS;
 }
 
+// Understand this pls
 void PlayState::is_complete()
 {
     int k = M - 1; // to prevent going out of playing field
     for (int i = k; i > 0; --i)
     {
-        int count = 0;
+        int count = 0; // Checks horizontally if all the tiles are filled up
         for (int j = 0; j < N; ++j)
         {
             // if field is occupied, count++
@@ -273,6 +274,11 @@ void PlayState::is_complete()
         if (count < N)
         {
             k--; // k needs to be updated to correspond to updating i
+                 // mimics i, but goes in opp direction
+        }
+        if (count == N)
+        {
+            cmplt_sound.play();
         }
     }
 }
