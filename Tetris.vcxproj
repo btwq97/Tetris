@@ -116,12 +116,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\benja\Downloads\SFML-2.5.1-sources\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Downloads\SFML-2.5.1-sources\SFML-2.5.1\include;C:\Users\benja\Downloads\SFML-2.5.1-sources\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\benja\Downloads\SFML-2.5.1-sources\SFML-2.5.1\extlibs\libs-msvc-universal\x64;C:\Users\benja\Downloads\SFML-2.5.1-sources\SFML-2.5.1\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Downloads\SFML-2.5.1-sources\SFML-2.5.1\lib\Debug;D:\Downloads\SFML-2.5.1-sources\SFML-2.5.1\extlibs\libs-msvc-universal\x64;C:\Users\benja\Downloads\SFML-2.5.1-sources\SFML-2.5.1\extlibs\libs-msvc-universal\x64;C:\Users\benja\Downloads\SFML-2.5.1-sources\SFML-2.5.1\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;openal32.lib;freetype.lib;winmm.lib;gdi32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

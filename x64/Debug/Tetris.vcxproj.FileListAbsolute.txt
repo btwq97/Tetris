@@ -1,2 +1,4 @@
 C:\Users\benja\source\repos\Tetris\x64\Debug\Tetris.exe
 C:\Users\benja\source\repos\Tetris\x64\Debug\Tetris.pdb
+D:\benja\Documents\Tetris\x64\Debug\Tetris.exe
+D:\benja\Documents\Tetris\x64\Debug\Tetris.pdb
