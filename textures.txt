@@ -1,6 +1,50 @@
-MenuImage	Images/Tetris_1.jpg
+MenuImage	C:\\Users\\benja\\source\\repos\\Tetris\\Images\\Tetris_1.jpg
 MenuFont	Font/evil-empire-font/EvilEmpire-4BBVK.ttf
-Tetrinos	Images/tiles.png
-TetrisBG	Images/background.png
-TetrisFrame	Images/frame.png
-GameOverImage	Images/Game_Over.jpg
+Tetrinos	C:\\Users\\benja\\source\\repos\\Tetris\\Images\\tiles.png
+TetrisBG	C:\\Users\\benja\\source\\repos\\Tetris\\Images\\background.png
+TetrisFrame	C:\\Users\\benja\\source\\repos\\Tetris\\Images\\frame.png
+GameOverImage	C:\\Users\\benja\\source\\repos\\Tetris\\Images\\Game_Over.jpg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

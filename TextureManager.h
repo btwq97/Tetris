@@ -5,6 +5,7 @@
 
 #include "ResourceManager.h"
 
+// Continue here
 class TextureManager : public ResourceManager<TextureManager, sf::Texture>
 {
 public:

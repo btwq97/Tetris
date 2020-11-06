@@ -6,6 +6,7 @@ const int MAX_FPS = 60;
 const char* WINDOW_TITLE = "My Tetris";
 const char* BG_MUSIC = "Audio/bgmusic.wav";
 
+// Stopped here
 Game::Game()
 {
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::None);
@@ -16,7 +17,6 @@ Game::Game()
     bgsound.setBuffer(bgbuffer);
     bgsound.setLoop(true);
     bgsound.play();
-
 }
 
 Game::~Game()

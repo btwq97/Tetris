@@ -148,3 +148,5 @@ private:
     }
 
 };
+
+// We stopped at Resouce Manager

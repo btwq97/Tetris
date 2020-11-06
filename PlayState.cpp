@@ -274,7 +274,6 @@ void PlayState::is_complete()
         if (count < N)
         {
             k--; // k needs to be updated to correspond to updating i
-                 // mimics i, but goes in opp direction
         }
         if (count == N)
         {

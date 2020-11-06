@@ -23,9 +23,10 @@ MenuState::MenuState(Game* game)
         buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * 100); // Spaces of 100, 200 in y-axis
     }
     buttons[0].setString("Play Game");
-    buttons[1].setString("    Quit");
+    buttons[1].setString("Quit Game");
 
     // Scaling image to appropiate size
+    // Errors here
     sf::Vector2f targetSize(MENU_WINDOW_WIDTH, MENU_WINDOW_HEIGHT);
     menuSprite.setScale(targetSize.x / menuSprite.getLocalBounds().width,
         targetSize.y / menuSprite.getLocalBounds().height);
