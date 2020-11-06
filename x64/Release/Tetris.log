@@ -1,0 +1,92 @@
+﻿  Game.cpp
+C:\Users\benja\source\repos\Tetris\Game.cpp(35,11): warning C4834: discarding return value of function with 'nodiscard' attribute
+  GameOverState.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\GameOverState.cpp(98,118): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\GameOverState.cpp(98,88): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\GameOverState.cpp(98,62): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\GameOverState.cpp(98,40): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  MenuState.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(107,118): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(107,88): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(107,62): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\benja\source\repos\Tetris\MenuState.cpp(107,40): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  PlayState.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.cpp(10,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Main.cpp
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\benja\source\repos\Tetris\PlayState.h(17,96): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 676 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Tetris.vcxproj -> C:\Users\benja\source\repos\Tetris\x64\Release\Tetris.exe
