@@ -5,13 +5,12 @@
 
 #include "ResourceManager.h"
 
-// const char* TEXTURE_DIR = "textures.txt";
-// const char* TEXTURE_DIR = "../textures.txt"; 
+const char* TEXTURE_DIR = "../textures.txt"; 
 
 class TextureManager : public ResourceManager<TextureManager, sf::Texture>
 {
 public:
-    TextureManager(): ResourceManager("../textures.txt") {}
+    TextureManager(): ResourceManager(TEXTURE_DIR) {}
 
     sf::Texture* Load(const std::string& fileName)
     {

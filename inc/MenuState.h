@@ -14,19 +14,17 @@
 
 const float MENU_WINDOW_WIDTH = 320.f, MENU_WINDOW_HEIGHT = 420.f;
 
-class MenuState : public GameState  //make GameState functions public to this class so we can derive it's functions.
+class MenuState : public GameState
 {
 public:
-    //constructor (compiler will automatically make a default one)
     MenuState(Game* game);
 
-    //the three functions are teh three things we must do.
     virtual void draw(const float dt);
     virtual void update(const float dt);
     virtual void handleInput();
 
 private:
-    //let's make a view for this just in case we want it
+    // Sprites
     sf::View view;
     TextureManager menuScreen;
     sf::Sprite menuSprite;
@@ -42,7 +40,7 @@ private:
     const int NUM_BUTTONS = 2;
     bool isTextClicked(sf::Text text);
 
-    //this will be used to change the game state to the "Play" state.
+    // Push into PlayState
     void loadgame();
 };
 

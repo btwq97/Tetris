@@ -1,8 +1,5 @@
 #include "PlayState.h"
 
-//const char* PRESSED_MUSIC = "Audio/move.wav";
-//const char* GM_OVER_MUSIC = "Audio/gameover.wav";
-//const char* COMPLT_MUSIC = "Audio/complete.wav";
 const char* PRESSED_MUSIC = "../Audio/move.wav";
 const char* GM_OVER_MUSIC = "../Audio/gameover.wav";
 const char* COMPLT_MUSIC = "../Audio/complete.wav";
