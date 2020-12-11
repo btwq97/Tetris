@@ -8,24 +8,6 @@ const char* GM_OVER_MUSIC = "../Audio/gameover.wav";
 const char* COMPLT_MUSIC = "../Audio/complete.wav";
 extern const char* FONT_PATH;
 
-int field[M][N] = { 0 };
-
-// swap between 2 frames to give illusion of moving
-struct position
-{int x, y;} frame_a[4], frame_b[4];
-
-// tetris pieces
-int tetrinos[7][4] =
-{
-    1,3,5,7, // i
-    2,4,5,7, // z
-    3,5,4,6, // s
-    3,5,4,7, // t
-    2,3,5,7, // l
-    3,5,7,6, // j
-    2,3,4,5, // o
-};
-
 PlayState::PlayState(Game* game)
 {
     srand(time(NULL)); // Init rand seed
@@ -134,37 +116,28 @@ void PlayState::update(const float dt)
     // falling mechanism
     if (timer > delay)
     {
-        std::cout << "1\n";
         // fall in the +ve y-direction
         for (int i = 0; i < 4; ++i)
         {
             frame_b[i] = frame_a[i];
             frame_a[i].y += 1;
         }
-        std::cout << "2\n";
         if (!Check())
         {
-            std::cout << "3\n";
             for (int i = 0; i < 4; ++i)
             {
                 field[frame_b[i].y][frame_b[i].x] = colournum;
             }
-            std::cout << "4\n";
             // randomly chooses the piece type and colour
             colournum = 1 + rand() % 7; //colour number from tiles.png
-            std::cout << "5\n";
             n = rand() % 7; // tile pieces
-            std::cout << "6\n";
             for (int i = 0; i < 4; i++)
             {
                 frame_a[i].x = tetrinos[n][i] % 2;
                 frame_a[i].y = tetrinos[n][i] / 2;
             }
-            std::cout << "7\n";
         }
-        std::cout << "8\n";
         timer = 0; // Reset timer once condition is true
-        std::cout << "9\n";
     }
 
     // rotate
