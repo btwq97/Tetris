@@ -19,7 +19,7 @@ all: $(EXE)
 
 $(EXE): $(OBJ)
 	mkdir -p $(BINPATH)
-	$(CXX) $^ $(LDLIBS) -o $(BINPATH)/$@
+	$(CXX) $^ $(LDLIBS) -g -o $(BINPATH)/$@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	mkdir -p $(OBJ_DIR)

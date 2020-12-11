@@ -37,26 +37,6 @@ public:
     PlayState(Game* game);
 
 private:
-    int field[M][N] = { 0 };
-
-    // swap between 2 frames to give illusion of moving
-    struct position
-    {
-        int x, y;
-    } frame_a[4], frame_b[4];
-
-    // tetris pieces
-    int tetrinos[7][4] =
-    {
-        1,3,5,7, // i
-        2,4,5,7, // z
-        3,5,4,6, // s
-        3,5,4,7, // t
-        2,3,5,7, // l
-        3,5,7,6, // j
-        2,3,4,5, // o
-    };
-
     bool rotate = 0;
     int dx = 0, colournum = 1 + rand() % 7, n = rand() % 7; // tile pieces
     double timer = 0, delay = DELAY;
