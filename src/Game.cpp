@@ -4,7 +4,7 @@ const int WINDOW_HEIGHT = 480;
 const int WINDOW_WIDTH = 320;
 const int MAX_FPS = 60;
 const char* WINDOW_TITLE = "My Tetris";
-const char* BG_MUSIC = "../Audio/bgmusic.wav";
+const char* BG_MUSIC = "Audio/bgmusic.wav";
 
 // Stopped here
 Game::Game()

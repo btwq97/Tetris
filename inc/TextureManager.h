@@ -8,7 +8,7 @@
 class TextureManager : public ResourceManager<TextureManager, sf::Texture>
 {
 public:
-    TextureManager(): ResourceManager("../textures.txt") {}
+    TextureManager(): ResourceManager("textures.txt") {}
 
     sf::Texture* Load(const std::string& fileName)
     {

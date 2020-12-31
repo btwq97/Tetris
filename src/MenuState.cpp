@@ -1,7 +1,7 @@
 #include "MenuState.h"
 
-const char* FONT_PATH = "../Font/evil-empire-font/EvilEmpire-4BBVK.ttf";
-const char* START_MUSIC = "../Audio/start.wav";
+const char* FONT_PATH = "Font/evil-empire-font/EvilEmpire-4BBVK.ttf";
+const char* START_MUSIC = "Audio/start.wav";
 
 
 MenuState::MenuState(Game* game)

@@ -1,8 +1,8 @@
 #include "PlayState.h"
 
-const char* PRESSED_MUSIC = "../Audio/move.wav";
-const char* GM_OVER_MUSIC = "../Audio/gameover.wav";
-const char* COMPLT_MUSIC = "../Audio/complete.wav";
+const char* PRESSED_MUSIC = "Audio/move.wav";
+const char* GM_OVER_MUSIC = "Audio/gameover.wav";
+const char* COMPLT_MUSIC = "Audio/complete.wav";
 extern const char* FONT_PATH;
 
 PlayState::PlayState(Game* game)
@@ -185,31 +185,26 @@ void PlayState::handleInput()
             if (event.key.code == sf::Keyboard::Escape)
             {
                 game_over_state();
-                std::cout << "Pressed ESC." << std::endl;
             }
             if (event.key.code == sf::Keyboard::Up)
             {
                 rotate = true;
                 play_sound();
-                std::cout << "Pressed up." << std::endl;
             }
             else if (event.key.code == sf::Keyboard::Left)
             {
                 dx = -1;
                 play_sound();
-                std::cout << "Pressed left." << std::endl;
             }
             else if (event.key.code == sf::Keyboard::Right)
             {
                 dx = 1;
                 play_sound();
-                std::cout << "Pressed right." << std::endl;
             }
             else if (event.key.code == sf::Keyboard::Down)
             {
                 delay = SPEED_UP;
                 play_sound();
-                std::cout << "Pressed down." << std::endl;
             }
             break;
         default:

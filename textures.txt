@@ -1,8 +1,8 @@
-MenuImage	../Images/Tetris_1.jpg
-Tetrinos	../Images/tiles.png
-TetrisBG	../Images/background.png
-TetrisFrame	../Images/frame.png
-GameOverImage	../Images/Game_Over.jpg
+MenuImage	    Images/Tetris_1.jpg
+Tetrinos	    Images/tiles.png
+TetrisBG	    Images/background.png
+TetrisFrame	    Images/frame.png
+GameOverImage	Images/Game_Over.jpg
 
 
 
