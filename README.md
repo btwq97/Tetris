@@ -1,27 +1,16 @@
-# Tetris
- Final Tetris with game states. This is a work in progress.
+# Tetris Game
+Retro style tetris game. This is a game in progress.
 
-Tested with Visual Studio 2019
+## About
+Runs in Windows VS Code.
 
-1) Download CMake here: https://cmake.org/download/
-2) Download SFML here: https://www.sfml-dev.org/download/sfml/2.5.1/
-3) Make and build all dependencies libraries.
-4) Add the following dependencies in your project:
+## DEPENDENCIES
+1. Download [MinGW](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download "MinGW").
+2. Download [SFML](https://www.sfml-dev.org/download/sfml/2.5.1/ "SFML").
+    1. Download the "GCC 7.3.0 MinGW (DW2) - 32-bit" version.
+    2. Make sure MINGW is added into environment PATH. See [link](https://code.visualstudio.com/docs/cpp/config-mingw).
+3. Test with the following code. If successful, it'll produce a green circle.
 ```
-===== ===== ===== ===== ===== DEBUG ===== ===== ===== ===== ======
-Additional include directories: [SFML parent directory]\SFML-2.5.1\include; 
-Preprocessor: SFML_STATIC; 
-Additional library directories: [SFML parent directory]\SFML-2.5.1\lib\Debug;[SFML parent directory]\SFML-2.5.1\extlibs\libs-msvc-universal\x64; 
-Additional dependencies: opengl32.lib;openal32.lib;freetype.lib;winmm.lib;gdi32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib; 
-===== ===== ===== ===== ===== RELEASE ===== ===== ===== ===== ====== 
-Additional include directories: [SFML parent directory]\SFML-2.5.1\include; 
-Preprocessor: SFML_STATIC;
-Additional library directories: [SFML parent directory]\SFML-2.5.1\lib\Release;[SFML parent directory]\SFML-2.5.1\extlibs\libs-msvc-universal\x64; 
-Additional dependencies: opengl32.lib;openal32.lib;freetype.lib;winmm.lib;gdi32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;
-```
-5) Test with the following code. If build success, it'll produce a green circle.
-```
-===== ===== ===== ===== ===== TEST CODE ===== ===== ===== ===== ====== 
 #include <SFML/Graphics.hpp>
 
 int main()
@@ -47,4 +36,7 @@ int main()
     return 0;
 }
 ```
-6) Run code in Debug mode and see the Tetris game run.
+## Running Tetris
+1. Open Terminal in VSC.
+2. PS> mingw32-make all (or any other make you installed using MINGW)
+3. PS> .\bin\tetris.exe
